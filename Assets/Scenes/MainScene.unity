@@ -1736,7 +1736,17 @@ PrefabInstance:
     - target: {fileID: 21566376177856766, guid: cae62278fdd23a34f993e7e6affec7dd,
         type: 3}
       propertyPath: _nameAxisLabel
+      value: Test
+      objectReference: {fileID: 0}
+    - target: {fileID: 21566376177856766, guid: cae62278fdd23a34f993e7e6affec7dd,
+        type: 3}
+      propertyPath: _axisLabelPrefab
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 21566376177856766, guid: cae62278fdd23a34f993e7e6affec7dd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1250810795474804821, guid: cae62278fdd23a34f993e7e6affec7dd,
         type: 3}
@@ -1847,6 +1857,26 @@ PrefabInstance:
         type: 3}
       propertyPath: _flipY
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7898136835948548957, guid: cae62278fdd23a34f993e7e6affec7dd,
+        type: 3}
+      propertyPath: _nameAxisLabel
+      value: test
+      objectReference: {fileID: 0}
+    - target: {fileID: 7898136835948548957, guid: cae62278fdd23a34f993e7e6affec7dd,
+        type: 3}
+      propertyPath: _axisLabelPrefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390132244167769083, guid: cae62278fdd23a34f993e7e6affec7dd,
+        type: 3}
+      propertyPath: _nameAxisLabel
+      value: Test
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390132244167769083, guid: cae62278fdd23a34f993e7e6affec7dd,
+        type: 3}
+      propertyPath: _axisLabelPrefab
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8719484427891274438, guid: cae62278fdd23a34f993e7e6affec7dd,
         type: 3}
@@ -2132,6 +2162,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &359458715 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5270551072297318219, guid: cae62278fdd23a34f993e7e6affec7dd,
+    type: 3}
+  m_PrefabInstance: {fileID: 264094821}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &359458716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359458715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f55ade380be2524eae4cabf722a7b91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _axisRoot: {fileID: 0}
+  _swapped: 1
+  _nameAxisLabel: 
 --- !u!1 &360935304
 GameObject:
   m_ObjectHideFlags: 0
@@ -2232,6 +2283,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 270675124928633713, guid: a46e10a81ab54c34594b37e75dba0e1c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7115892570857439524, guid: a46e10a81ab54c34594b37e75dba0e1c,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -4417,6 +4473,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data: {fileID: 4900000, guid: 92de866f4f2792b479c12de2fd3b4e9c, type: 3}
+--- !u!1 &760952074 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5823346799244107757, guid: cae62278fdd23a34f993e7e6affec7dd,
+    type: 3}
+  m_PrefabInstance: {fileID: 264094821}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &760952075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760952074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f55ade380be2524eae4cabf722a7b91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _axisRoot: {fileID: 0}
+  _swapped: 1
+  _nameAxisLabel: 
 --- !u!1 &774745972
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class GenericAxisPrefab : MonoBehaviour
 {
-    [SerializeField]
-    public TextMeshPro _axisLabelPrefab = null;
+    //[SerializeField]
+    //public TextMeshPro _axisLabelPrefab = null;
     [SerializeField]
     public Transform _axisRoot = null;
     [SerializeField]
@@ -24,13 +24,13 @@ public class GenericAxisPrefab : MonoBehaviour
 
     private void CreateAxisLabel (string _axislabel)
     {
-        var label = Instantiate(_axisLabelPrefab, _axisRoot.transform, false);
+        //var label = Instantiate(_axisLabelPrefab, _axisRoot.transform, false);
         float posX = _length / 2;
         float posY = _length / 16;
         if (!_swapped)
             posY *= -1;
-        label.transform.localPosition = new Vector3(posX, posY, 0.0f);
-        label.text = _axislabel;
+        //label.transform.localPosition = new Vector3(posX, posY, 0.0f);
+        //label.text = _axislabel;
     }
 
 }
