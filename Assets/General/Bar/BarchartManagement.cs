@@ -39,7 +39,7 @@ namespace BarChart
         private GameObject TempObj;
         private Vector3 _relativeScale;
         private Vector3 _relativePosition;
-
+        private readonly string _nameObject = "bar";
 
         #endregion
         // Start is called before the first frame update
@@ -54,6 +54,7 @@ namespace BarChart
                     UpdateBarSize(TempObj, i);
                     UpdateBarPosition(TempObj, i, j);
                     SetMaterial(TempObj, i);
+                    AddNameObject(TempObj, i, j);
                 }
             }
             StartCoroutine(WaitResquest());
@@ -157,6 +158,12 @@ namespace BarChart
             {
                 _message.transform.position = new Vector3(0, 0, -10);
             }
+        }
+
+        void AddNameObject(GameObject gameObj, int indexX, int indexY)
+        {
+            gameObj = gameObj.transform.GetChild(0).gameObject;
+            gameObj.name = string.Concat(_nameObject, indexX, indexY);
         }
     }
 }

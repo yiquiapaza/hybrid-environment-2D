@@ -2341,7 +2341,7 @@ PrefabInstance:
     - target: {fileID: 7115892571083044648, guid: a46e10a81ab54c34594b37e75dba0e1c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7115892571083044648, guid: a46e10a81ab54c34594b37e75dba0e1c,
         type: 3}
@@ -2365,12 +2365,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a46e10a81ab54c34594b37e75dba0e1c, type: 3}
---- !u!1 &411536340 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7115892571083044649, guid: a46e10a81ab54c34594b37e75dba0e1c,
-    type: 3}
-  m_PrefabInstance: {fileID: 411536339}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &411792792
 GameObject:
   m_ObjectHideFlags: 0
@@ -3865,7 +3859,7 @@ Transform:
   m_Children:
   - {fileID: 776637126}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &662856087
 GameObject:
@@ -8073,6 +8067,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1623419659}
   - component: {fileID: 1623419660}
+  - component: {fileID: 1623419661}
   m_Layer: 0
   m_Name: BarChart
   m_TagString: Untagged
@@ -8109,7 +8104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _barElement: {fileID: 6833128755854664083, guid: 49e766a00a6587b4e9dfbec0f011a50f,
     type: 3}
-  _message: {fileID: 411536340}
+  _message: {fileID: 0}
   _countries: 8
   _years: 8
   _materialCountry1: {fileID: 2100000, guid: 3c55769e893c4f4c8c51b7fa69bee2b9, type: 2}
@@ -8120,6 +8115,19 @@ MonoBehaviour:
   _materialCountry6: {fileID: 2100000, guid: d808c628536649eaa61f2a2f2d16c6cc, type: 2}
   _materialCountry7: {fileID: 2100000, guid: 67e4ae112f094f3082e033060c3cd298, type: 2}
   _materialCountry8: {fileID: 2100000, guid: 56848fd596f082a43844edfc0e7647ae, type: 2}
+--- !u!114 &1623419661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623419658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3872d00c45fbbf046a5c217da9c1c0cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _changeMaterial: {fileID: 2100000, guid: 680505b4b4f3400f9fd3ebb242751819, type: 2}
 --- !u!1 &1624372097
 GameObject:
   m_ObjectHideFlags: 0
