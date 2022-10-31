@@ -39,6 +39,8 @@ namespace BarChart
         private GameObject TempObj;
         private Vector3 _relativeScale;
         private Vector3 _relativePosition;
+        private float _valueZ = 1;
+        private float _tmpHeight = 0.0f;
         private readonly string _nameObject = "bar";
 
         #endregion
@@ -66,15 +68,36 @@ namespace BarChart
             //ObjectInfo();
         }
 
-        void UpdateBarPosition(GameObject gameObject, int index, int indexz)
+        void UpdateBarPosition(GameObject gameObject, int indexX, int indexZ)
         {
             _relativePosition = gameObject.transform.localPosition;
             _relativeScale = gameObject.transform.localScale;
+            float temp = 0;
             var tempChild = gameObject.transform.GetChild(0).gameObject;
+            if (_valueZ == indexX)
+            {
+                if (indexZ == 1)
+                {
+                    temp = 0.1f * _valueZ * (_relativeScale.x);
+
+                }
+                else
+                {
+                    temp = 0.1f * indexX * (_relativeScale.x);
+                    _tmpHeight = _tmpHeight + (tempChild.transform.localScale.y / _relativeScale.y) + (tempChild.transform.localScale.y / 2) * _relativeScale.y;
+                }
+            }
+            else
+            {
+                _valueZ++;
+                _tmpHeight = 0;
+                temp = 0.1f * indexX * (_relativeScale.x);
+
+            }
             gameObject.transform.localPosition = new Vector3( 
-                ( transform.position.x * _relativeScale.x ) + _relativePosition.x + 0.1f * index * (_relativeScale.x),
-                (tempChild.transform.localScale.y / _relativeScale.y) + (tempChild.transform.localScale.y / 2 ) * _relativeScale.y , 
-                ( -transform.position.z * _relativeScale.z ) - (_relativePosition.z + 0.2f * indexz * (_relativeScale.z)));
+                ( transform.position.x * _relativeScale.x ) + _relativePosition.x + temp,
+                _tmpHeight + ( tempChild.transform.localScale.y / _relativeScale.y) + (tempChild.transform.localScale.y / 2 ) * _relativeScale.y , 
+                ( -transform.position.z * _relativeScale.z ) - (_relativePosition.z + 0.2f * indexZ * (_relativeScale.z))); 
         }
 
         void UpdateBarSize(GameObject gameObject, float size = 0)
@@ -83,7 +106,7 @@ namespace BarChart
             gameObject = gameObject.transform.GetChild(0).gameObject;
             gameObject.transform.localScale = new Vector3(
                 gameObject.transform.localScale.x / _relativeScale.x , 
-                Random.Range(0f, gameObject.transform.localScale.y / _relativeScale.y * 10), 
+                Random.Range(0f, gameObject.transform.localScale.y / _relativeScale.y * 9), 
                 gameObject.transform.localScale.z / _relativeScale.z);
         }
 
