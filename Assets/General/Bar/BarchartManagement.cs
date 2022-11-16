@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using Microsoft.MixedReality.Toolkit;
+using SimpleJSON;
 
 namespace BarChart
 {
     #region Materials
-    public enum MaterialSelector
+    public static class MaterialSelector
     {
-        ObjectA = 1,
-        ObjectB = 2,
-        ObjectC = 3,
-        ObjectD = 4,
-        ObjectE = 5,
-        ObjectF = 6,
-        ObjectG = 7,
-        ObjectH = 8
+        public const string CATEGORY1 = "OC";
+        public const string CATEGORY2 = "AS";
+        public const string CATEGORY3 = "EU";
+        public const string CATEGORY4 = "AF";
+        public const string CATEGORY5 = "NA";
+        public const string CATEGORY6 = "01";
+        public const string CATEGORY7 = "02"; 
+        public const string CATEGORY8 = "03";
     }
     #endregion
 
@@ -25,16 +26,16 @@ namespace BarChart
         #region Features
         [SerializeField] GameObject _barElement;
         [SerializeField] GameObject _message;
-        [SerializeField] int _countries;
-        [SerializeField] int _years;
-        [SerializeField] Material _materialCountry1;
-        [SerializeField] Material _materialCountry2;
-        [SerializeField] Material _materialCountry3;
-        [SerializeField] Material _materialCountry4;
-        [SerializeField] Material _materialCountry5;
-        [SerializeField] Material _materialCountry6;
-        [SerializeField] Material _materialCountry7;
-        [SerializeField] Material _materialCountry8;
+        [SerializeField] Material _materialCategory1;
+        [SerializeField] Material _materialCategory2;
+        [SerializeField] Material _materialCategory3;
+        [SerializeField] Material _materialCategory4;
+        [SerializeField] Material _materialCategory5;
+        [SerializeField] Material _materialCategory6;
+        [SerializeField] Material _materialCategory7;
+        [SerializeField] Material _materialCategory8;
+
+        [SerializeField] TextAsset _data;
 
         private GameObject TempObj;
         private Vector3 _relativeScale;
@@ -42,21 +43,26 @@ namespace BarChart
         private float _valueZ = 1;
         private float _tmpHeight = 0.0f;
         private readonly string _nameObject = "bar";
-
+        private JSONArray _tempData;
         #endregion
         // Start is called before the first frame update
         void Start()
         {
-            for (int i = 1; _countries >= i; i++) // Country
+            _tempData = (JSONArray)JSON.Parse(_data.text);
+            for (int i = 1; _tempData.Count - 1  >= i; i++)
             {
-                for (int j = 1; _years >= j; j++)
+
+                for (int j = 1; _tempData[i]["parameter3"].Count >= j; j++)
                 {
-                    TempObj = Instantiate(_barElement) as GameObject;
-                    TempObj.transform.parent = transform;
-                    UpdateBarSize(TempObj, i);
-                    UpdateBarPosition(TempObj, i, j);
-                    SetMaterial(TempObj, i);
-                    AddNameObject(TempObj, i, j);
+                    if (_tempData[i]["status"])
+                    {
+                        TempObj = Instantiate(_barElement) as GameObject;
+                        TempObj.transform.parent = transform;
+                        UpdateBarSize(TempObj, i);
+                        UpdateBarPosition(TempObj, i, j);
+                        SetMaterial(TempObj, _tempData[i]["parameter1"]);
+                        AddNameObject(TempObj, i, j);
+                    }
                 }
             }
             StartCoroutine(WaitResquest());
@@ -111,34 +117,34 @@ namespace BarChart
         }
 
         #region Material
-        void SetMaterial(GameObject gameObject, int index)
+        void SetMaterial(GameObject gameObject, string category)
         {
             gameObject = gameObject.transform.GetChild(0).gameObject;
-            switch (index)
+            switch (category)
             {
-                case (int) MaterialSelector.ObjectA:
-                    gameObject.GetComponent<MeshRenderer>().material = _materialCountry1;
+                case MaterialSelector.CATEGORY1:
+                    gameObject.GetComponent<MeshRenderer>().material = _materialCategory1;
                     break;
-                case (int) MaterialSelector.ObjectB:
-                    gameObject.GetComponent<MeshRenderer>().material = _materialCountry2;
+                case MaterialSelector.CATEGORY2:
+                    gameObject.GetComponent<MeshRenderer>().material = _materialCategory2;
                     break;
-                case (int)MaterialSelector.ObjectC:
-                    gameObject.GetComponent<MeshRenderer>().material = _materialCountry3;
+                case MaterialSelector.CATEGORY3:
+                    gameObject.GetComponent<MeshRenderer>().material = _materialCategory3;
                     break;
-                case (int)MaterialSelector.ObjectD:
-                    gameObject.GetComponent<MeshRenderer>().material = _materialCountry4;
+                case MaterialSelector.CATEGORY4:
+                    gameObject.GetComponent<MeshRenderer>().material = _materialCategory4;
                     break;
-                case (int)MaterialSelector.ObjectE:
-                    gameObject.GetComponent<MeshRenderer>().material = _materialCountry5;
+                case MaterialSelector.CATEGORY5:
+                    gameObject.GetComponent<MeshRenderer>().material = _materialCategory5;
                     break;
-                case (int)MaterialSelector.ObjectF:
-                    gameObject.GetComponent<MeshRenderer>().material = _materialCountry6;
+                case MaterialSelector.CATEGORY6:
+                    gameObject.GetComponent<MeshRenderer>().material = _materialCategory6;
                     break;
-                case (int)MaterialSelector.ObjectG:
-                    gameObject.GetComponent<MeshRenderer>().material = _materialCountry7;
+                case MaterialSelector.CATEGORY7:
+                    gameObject.GetComponent<MeshRenderer>().material = _materialCategory7;
                     break;
-                case (int)MaterialSelector.ObjectH:
-                    gameObject.GetComponent<MeshRenderer>().material = _materialCountry8;
+                case MaterialSelector.CATEGORY8:
+                    gameObject.GetComponent<MeshRenderer>().material = _materialCategory8;
                     break;
             }
         }
