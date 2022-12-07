@@ -57,20 +57,17 @@ namespace BarChart
         void Start()
         {
             _tempData = (JSONArray)JSON.Parse(_data.text);
-            for (int i = 1; _tempData.Count - 1  >= i; i++)
+            for (int i = 0; _tempData.Count > i; i++)
             {
 
-                for (int j = 1; _tempData[i]["parameter3"].Count >= j; j++)
+                for (int j = 0; _tempData[i]["parameter3"].Count > j; j++)
                 {
-                    if (_tempData[i]["status"])
-                    {
-                        TempObj = Instantiate(_barElement) as GameObject;
-                        TempObj.transform.parent = transform;
-                        UpdateBarSize(TempObj, i);
-                        UpdateBarPosition(TempObj, i, j);
-                        SetMaterial(TempObj, _tempData[i]["parameter1"]);
-                        AddNameObject(TempObj, i, j);
-                    }
+                    TempObj = Instantiate(_barElement) as GameObject;
+                    TempObj.transform.parent = transform;
+                    UpdateBarSize(TempObj, i);
+                    UpdateBarPosition(TempObj, i, j);
+                    SetMaterial(TempObj, _tempData[i]["parameter1"]);
+                    AddNameObject(TempObj, i+1, j);
                 }
             }
             StartCoroutine(WaitResquest());
@@ -84,40 +81,26 @@ namespace BarChart
 
         void UpdateBarPosition(GameObject gameObject, int indexX, int indexZ)
         {
+            Debug.Log("Possition");
             _relativePosition = gameObject.transform.localPosition;
             _relativeScale = gameObject.transform.localScale;
-            float temp = 0;
-            var tempChild = gameObject.transform.GetChild(0).gameObject;
-            if (_valueZ == indexX)
+            float tempY = 0;
+            if (indexZ == 0 )
             {
-                if (indexZ == 1)
-                {
-                    temp = 0.1f * _valueZ * (_relativeScale.x);
-
-                }
-                else
-                {
-                    temp = 0.1f * indexX * (_relativeScale.x);
-                    _tmpHeight = _tmpHeight + (tempChild.transform.localScale.y / _relativeScale.y) + (tempChild.transform.localScale.y / 2) * _relativeScale.y;
-                }
+                tempY = _relativeScale.y/2;
+                gameObject.transform.localPosition = new Vector3(indexX + 1f, tempY, 0);
             }
             else
             {
-                _valueZ++;
-                _tmpHeight = 0;
-                temp = 0.1f * indexX * (_relativeScale.x);
-
+                tempY = _relativeScale.y/2 + tempY/2;
+                gameObject.transform.localPosition = new Vector3(indexX + 1f , tempY, 0);
             }
-            gameObject.transform.localPosition = new Vector3( 
-                ( transform.position.x * _relativeScale.x ) + _relativePosition.x + temp,
-                _tmpHeight + ( tempChild.transform.localScale.y / _relativeScale.y) + (tempChild.transform.localScale.y / 2 ) * _relativeScale.y , 
-                ( -transform.position.z * _relativeScale.z ) - (_relativePosition.z + 0.2f * indexZ * (_relativeScale.z))); 
         }
 
         void UpdateBarSize(GameObject gameObject, float size = 0)
         {
+            Debug.Log("Size");
             _relativeScale = gameObject.transform.localScale;
-            gameObject = gameObject.transform.GetChild(0).gameObject;
             gameObject.transform.localScale = new Vector3(
                 gameObject.transform.localScale.x / _relativeScale.x , 
                 Random.Range(0f, gameObject.transform.localScale.y / _relativeScale.y * 9), 
@@ -127,7 +110,6 @@ namespace BarChart
         #region Material
         void SetMaterial(GameObject gameObject, string category)
         {
-            gameObject = gameObject.transform.GetChild(0).gameObject;
             switch (category)
             {
                 case MaterialSelector.CATEGORY1:
@@ -199,8 +181,7 @@ namespace BarChart
 
         void AddNameObject(GameObject gameObj, int indexX, int indexY)
         {
-            gameObj = gameObj.transform.GetChild(0).gameObject;
-            gameObj.name = string.Concat(_nameObject, indexX, indexY);
+            gameObj.name = string.Concat(_nameObject, indexX, "-", indexY);
         }
     }
 }
