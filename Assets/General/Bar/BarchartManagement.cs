@@ -26,13 +26,21 @@ namespace BarChart
         #region Features
         [SerializeField] GameObject _barElement;
         [SerializeField] GameObject _message;
+        //Yellow
         [SerializeField] Material _materialCategory1;
+        //red
         [SerializeField] Material _materialCategory2;
+        //Purple
         [SerializeField] Material _materialCategory3;
+        //Green
         [SerializeField] Material _materialCategory4;
+        //Blue
         [SerializeField] Material _materialCategory5;
+        //White
         [SerializeField] Material _materialCategory6;
+        //ligth
         [SerializeField] Material _materialCategory7;
+        //Emerald
         [SerializeField] Material _materialCategory8;
 
         [SerializeField] TextAsset _data;
