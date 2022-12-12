@@ -52,6 +52,7 @@ namespace BarChart
         private float _tmpHeight = 0.0f;
         private readonly string _nameObject = "bar";
         private JSONArray _tempData;
+        private float _temp = 0;
         #endregion
         // Start is called before the first frame update
         void Start()
@@ -83,23 +84,27 @@ namespace BarChart
         {
             Debug.Log("Possition");
             _relativePosition = gameObject.transform.localPosition;
+            Debug.Log("Position" + _relativePosition.ToString());
             _relativeScale = gameObject.transform.localScale;
-            float tempY = 0;
+            float length = 0;
             if (indexZ == 0 )
             {
-                tempY = _relativeScale.y/2;
-                gameObject.transform.localPosition = new Vector3(indexX + 1f, tempY, 0);
+                _temp = 0;
+                _temp = _relativeScale.y;
+                length = _temp / 2;
+                gameObject.transform.localPosition = new Vector3(indexX + 1f, length, 0);
             }
             else
             {
-                tempY = _relativeScale.y/2 + tempY/2;
-                gameObject.transform.localPosition = new Vector3(indexX + 1f , tempY, 0);
+                _temp = _temp + _relativeScale.y / 2 ;
+                
+                gameObject.transform.localPosition = new Vector3(indexX + 1f, _temp + 0.1f, 0);
+                _temp = _temp + _relativeScale.y / 2 + 0.1f;
             }
         }
 
         void UpdateBarSize(GameObject gameObject, float size = 0)
         {
-            Debug.Log("Size");
             _relativeScale = gameObject.transform.localScale;
             gameObject.transform.localScale = new Vector3(
                 gameObject.transform.localScale.x / _relativeScale.x , 
