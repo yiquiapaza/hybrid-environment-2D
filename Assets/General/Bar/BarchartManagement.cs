@@ -186,7 +186,7 @@ namespace BarChart
 
         void AddNameObject(GameObject gameObj, int indexX, int indexY)
         {
-            gameObj.name = string.Concat(_nameObject, indexX, "-", indexY);
+            gameObj.name = string.Concat(_nameObject, indexX, indexY);
         }
     }
 }
