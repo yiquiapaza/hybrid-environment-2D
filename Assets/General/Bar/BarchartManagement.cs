@@ -65,7 +65,7 @@ namespace BarChart
                 {
                     TempObj = Instantiate(_barElement) as GameObject;
                     TempObj.transform.parent = transform;
-                    UpdateBarSize(TempObj, i);
+                    UpdateBarSize(TempObj, _tempData[i]["parameter3"][j]);
                     UpdateBarPosition(TempObj, i, j);
                     SetMaterial(TempObj, _tempData[i]["parameter1"]);
                     AddNameObject(TempObj, i+1, j);
@@ -98,17 +98,19 @@ namespace BarChart
             {
                 _temp = _temp + _relativeScale.y / 2 ;
                 
-                gameObject.transform.localPosition = new Vector3(indexX + 1f, _temp + 0.1f, 0);
-                _temp = _temp + _relativeScale.y / 2 + 0.1f;
+                gameObject.transform.localPosition = new Vector3(indexX + 1f, _temp + 0.025f, 0);
+                _temp = _temp + _relativeScale.y / 2 + 0.025f;
             }
         }
 
         void UpdateBarSize(GameObject gameObject, float size = 0)
         {
             _relativeScale = gameObject.transform.localScale;
+            Debug.Log("++++" + size);
             gameObject.transform.localScale = new Vector3(
                 gameObject.transform.localScale.x / _relativeScale.x , 
-                Random.Range(0f, gameObject.transform.localScale.y / _relativeScale.y * 9), 
+                //Random.Range(0f, gameObject.transform.localScale.y / _relativeScale.y * 9), 
+                size*2.5f,
                 gameObject.transform.localScale.z / _relativeScale.z);
         }
 
