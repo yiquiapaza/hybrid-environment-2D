@@ -82,9 +82,7 @@ namespace BarChart
 
         void UpdateBarPosition(GameObject gameObject, int indexX, int indexZ)
         {
-            Debug.Log("Possition");
             _relativePosition = gameObject.transform.localPosition;
-            Debug.Log("Position" + _relativePosition.ToString());
             _relativeScale = gameObject.transform.localScale;
             float length = 0;
             if (indexZ == 0 )
@@ -106,7 +104,6 @@ namespace BarChart
         void UpdateBarSize(GameObject gameObject, float size = 0)
         {
             _relativeScale = gameObject.transform.localScale;
-            Debug.Log("++++" + size);
             gameObject.transform.localScale = new Vector3(
                 gameObject.transform.localScale.x / _relativeScale.x , 
                 //Random.Range(0f, gameObject.transform.localScale.y / _relativeScale.y * 9), 
@@ -188,7 +185,7 @@ namespace BarChart
 
         void AddNameObject(GameObject gameObj, int indexX, int indexY)
         {
-            gameObj.name = string.Concat(_nameObject, indexX, indexY);
+            gameObj.name = string.Concat(_nameObject, "-", indexX, "-", indexY);
         }
     }
 }
