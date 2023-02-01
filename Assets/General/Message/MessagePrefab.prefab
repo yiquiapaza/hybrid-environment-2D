@@ -19,7 +19,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: Test
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -41,13 +41,13 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 0.8
+  m_fontSizeBase: 0.8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -82,7 +82,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -0.32813835, z: 0, w: -0.18112577}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -240,7 +240,7 @@ PrefabInstance:
     - target: {fileID: 8620130152295088663, guid: 2fab8f551b670814b99b14ab53c6f975,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.036
       objectReference: {fileID: 0}
     - target: {fileID: 8620130152295088663, guid: 2fab8f551b670814b99b14ab53c6f975,
         type: 3}
@@ -340,7 +340,7 @@ PrefabInstance:
     - target: {fileID: 8620130152295088663, guid: 2fab8f551b670814b99b14ab53c6f975,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fab8f551b670814b99b14ab53c6f975, type: 3}

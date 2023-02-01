@@ -15,10 +15,14 @@ namespace BarChart
 
         private string[] data;
         private JSONArray _tempData;
+        private GameObject message;
         #endregion
         // Start is called before the first frame update
         void Start()
         {
+            message = Instantiate(_message);
+            message.SetActive(false);
+            //message.transform.parent = transform;
             _tempData = (JSONArray)JSON.Parse(_data.text);
         }
 
@@ -26,16 +30,23 @@ namespace BarChart
         {
 
         }
-        void OnMouseDown()
-        {
-            GameObject tempGameOject;
 
+        void OnMouseOver()
+        {
+            message.SetActive(true);
+            message.transform.position = new Vector3(1.2f, 0.6f, -0.2f);
+            GameObject tempGameOject;
             data = gameObject.name.Split('-');
             Debug.Log(data[0]);
-            tempGameOject = _message.transform.GetChild(1).gameObject;
+            tempGameOject = message.transform.GetChild(1).gameObject;
             Debug.Log(tempGameOject.name);
             tempGameOject.GetComponent<TextMeshPro>().text = _tempData[Int16.Parse(data[1])]["parameter"] + "\n" + _tempData[Int16.Parse(data[1])]["parameter3"][Int16.Parse(data[2])];
 
+        }
+
+        private void OnMouseExit()
+        {
+            message.SetActive(false);
         }
     }
 }
