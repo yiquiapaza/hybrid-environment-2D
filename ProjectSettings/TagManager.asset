@@ -19,6 +19,8 @@ TagManager:
   - scatter14
   - scatter15
   - scatter16
+  - scatter0
+  - scatter7
   layers:
   - Default
   - TransparentFX

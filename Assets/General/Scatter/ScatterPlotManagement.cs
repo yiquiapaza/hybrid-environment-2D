@@ -38,6 +38,7 @@ namespace ScatterPlot
         #endregion
 
         #region Features
+        [SerializeField] int _parameter;
         private GameObject _tempObject;
         private JSONArray _tempData;
         #endregion
@@ -53,9 +54,9 @@ namespace ScatterPlot
                     _tempObject.transform.parent = transform;
                     AddTagObject(_tempObject, i);
                     SetMaterial(_tempObject, _tempData[i]["parameter1"]);
+                    UpdatePosition(_tempObject, i,"parameter3", "parameter3", _parameter);
                 }
             }
-            UpdatePosition("parameter3", "parameter3", 2);
         }
         // Update is called once per frame
         void Update()
@@ -68,17 +69,12 @@ namespace ScatterPlot
             tempObject.tag = string.Concat("scatter", i);
         }
 
-        private void UpdatePosition(string x, string y, int value)
+        private void UpdatePosition(GameObject gameObject, int element, string x, string y, int value)
         {
-            for (int i = 0; _tempData.Count > i; i++)
-            {
-                _tempObject = GameObject.Find("scatter" + i) as GameObject;
-                Debug.Log(_tempObject.transform.localScale);
-                Debug.Log(_tempObject.transform.position);
-                Debug.Log(_tempObject.transform.localPosition);
-                Debug.Log(_tempData[i][x]);
-                _tempObject.transform.localPosition = new Vector3(_tempData[i][x][value], _tempData[i][y][value], 0);
-            }
+            Debug.Log(_tempObject.transform.localScale.ToString());
+            Debug.Log(_tempObject.transform.position.ToString());
+            Debug.Log(_tempData[value][x]);
+            gameObject.transform.localPosition = new Vector3(_tempData[element][x][value], _tempData[element][y][value], 0);   
         }
 
         #region Select Material
