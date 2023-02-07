@@ -4,23 +4,22 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - scatter1
-  - scatter2
-  - scatter3
-  - scatter4
-  - scatter5
-  - scatter6
-  - scatter8
-  - scatter9
-  - scatter10
-  - scatter11
-  - scatter12
-  - scatter13
-  - scatter14
-  - scatter15
-  - scatter16
-  - scatter0
-  - scatter7
+  - scatter-0
+  - scatter-1
+  - scatter-2
+  - scatter-3
+  - scatter-4
+  - scatter-5
+  - scatter-6
+  - scatter-7
+  - scatter-8
+  - scatter-9
+  - scatter-10
+  - scatter-11
+  - scatter-12
+  - scatter-13
+  - scatter-14
+  - scatter-15
   layers:
   - Default
   - TransparentFX
