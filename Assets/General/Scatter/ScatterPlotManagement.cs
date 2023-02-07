@@ -35,10 +35,10 @@ namespace ScatterPlot
         [SerializeField] Material _materialCategory8;
 
         [SerializeField] TextAsset _data;
+        [SerializeField] int _parameter;
         #endregion
 
         #region Features
-        [SerializeField] int _parameter;
         private GameObject _tempObject;
         private JSONArray _tempData;
         #endregion
@@ -52,6 +52,7 @@ namespace ScatterPlot
                 {
                     _tempObject = Instantiate(_scatterElement);
                     _tempObject.transform.parent = transform;
+                    AddName(_tempObject, _parameter, i);
                     AddTagObject(_tempObject, i);
                     SetMaterial(_tempObject, _tempData[i]["parameter1"]);
                     UpdatePosition(_tempObject, i,"parameter3", "parameter3", _parameter);
@@ -66,7 +67,7 @@ namespace ScatterPlot
 
         private void AddTagObject(GameObject tempObject, int i)
         {
-            tempObject.tag = string.Concat("scatter", i);
+            tempObject.tag = string.Concat("scatter-", i);
         }
 
         private void UpdatePosition(GameObject gameObject, int element, string x, string y, int value)
@@ -75,6 +76,11 @@ namespace ScatterPlot
             Debug.Log(_tempObject.transform.position.ToString());
             Debug.Log(_tempData[value][x]);
             gameObject.transform.localPosition = new Vector3(_tempData[element][x][value], _tempData[element][y][value], 0);   
+        }
+
+        private void AddName(GameObject tempObject, int position, int value)
+        {
+            tempObject.name = string.Concat("scatter", "-", position, "-", value);
         }
 
         #region Select Material
