@@ -24,7 +24,7 @@ namespace BarChart
             WWWForm form = new WWWForm();
             form.AddField("state", gameObject.name);
             Debug.Log(gameObject.transform.ToString());
-            using (UnityWebRequest request = UnityWebRequest.Post(Constants.ENDPOINT_RAWDATA, form))
+            using (UnityWebRequest request = UnityWebRequest.Post(Constants.ENDPOINT_BARCHART_GET, form))
             {
                 yield return request.SendWebRequest();
                 if (request.isNetworkError || request.isHttpError)

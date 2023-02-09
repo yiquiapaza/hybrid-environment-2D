@@ -71,7 +71,6 @@ namespace BarChart
                     AddNameObject(TempObj, i+1, j);
                 }
             }
-            StartCoroutine(WaitResquest());
         }
 
         // Update is called once per frame
@@ -144,44 +143,6 @@ namespace BarChart
         }
         #endregion
 
-        IEnumerator RequestServer ()
-        {
-            using (UnityWebRequest request = UnityWebRequest.Get(Constants.ENDPOINT_RAWDATA))
-            {
-                yield return request.SendWebRequest();
-                if (request.isHttpError || request.isNetworkError)
-                {
-                    Debug.Log(request.error);
-                } 
-                else
-                {
-                    Debug.Log(request.downloadHandler.text);
-                }
-            }
-        }
-
-        IEnumerator WaitResquest()
-        {
-            while (true)
-            {
-                StartCoroutine(RequestServer());
-                Debug.Log("Wait for next update");
-                yield return new WaitForSecondsRealtime(1f);
-            }
-        }
-
-        void ObjectInfo ()
-        {
-            if (CoreServices.InputSystem.GazeProvider.GazeTarget)
-            {
-                var tempPosition = CoreServices.InputSystem.GazeProvider.GazeTarget.transform.position;
-                _message.transform.SetPositionAndRotation(new Vector3(tempPosition.x, tempPosition.y + 0.08f, tempPosition.z), Quaternion.LookRotation(Camera.main.transform.forward));
-            }
-            else
-            {
-                _message.transform.position = new Vector3(0, 0, -10);
-            }
-        }
 
         void AddNameObject(GameObject gameObj, int indexX, int indexY)
         {

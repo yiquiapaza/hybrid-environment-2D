@@ -9,10 +9,10 @@ namespace BarChart
     public class BarChartClient : MonoBehaviour
     {
         [SerializeField]
-        private Material _changeMaterial;
+        //private Material _changeMaterial;
         private JSONNode _dataRequest;
         private Material _tempMaterial;
-        private string _nameObject = "bar00";
+        private string _nameObject = "bar";
         private GameObject _tempObject;
         // Start is called before the first frame update
         void Start()
@@ -28,7 +28,7 @@ namespace BarChart
 
         IEnumerator RequestServer()
         {
-            using (UnityWebRequest request = UnityWebRequest.Get(Constants.ENDPOINT_RAWDATA))
+            using (UnityWebRequest request = UnityWebRequest.Get(Constants.ENDPOINT_BARCHART_GET))
             {
                 yield return request.SendWebRequest();
                 if (request.isHttpError || request.isNetworkError)
@@ -38,15 +38,16 @@ namespace BarChart
                 else
                 {
                     Debug.Log(request.downloadHandler.text);
-                    _dataRequest = (JSONNode)JSON.Parse(request.downloadHandler.text);
-                    if (!_dataRequest["state"].Equals("bar00"))
+                    _dataRequest = (JSONArray)JSON.Parse(request.downloadHandler.text);
+                    if (!_dataRequest.IsNull)
                     {
-                        _tempObject = GameObject.Find(_dataRequest["state"]);
+
+                        //_tempObject = GameObject.Find(_dataRequest["state"]);
                         //_tempMaterial = _tempObject.GetComponent<MeshRenderer>().material;
-                        _tempObject.GetComponent<MeshRenderer>().material = _changeMaterial;
-                        Debug.Log(_tempObject.transform.position);
+                        //_tempObject.GetComponent<MeshRenderer>().material = _changeMaterial;
+                        Debug.Log(_dataRequest);
                     }
-                    Debug.Log(_dataRequest["state"]);
+                    Debug.Log(_dataRequest);
                 }
 
             }

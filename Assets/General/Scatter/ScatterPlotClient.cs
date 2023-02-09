@@ -10,7 +10,7 @@ namespace ScatterPlot
     public class ScatterPlotClient : MonoBehaviour
     {
         #region Features
-        [SerializeField] Material _selectMaterial;
+        [SerializeField] Material _selectMaterial = null;
         private JSONNode _dataRequest;
         private GameObject _tempObject;
         #endregion
@@ -27,7 +27,7 @@ namespace ScatterPlot
         }
         IEnumerator RequestServer()
         {
-            using (UnityWebRequest request = UnityWebRequest.Get(Constants.ENDPOINT_RAWDATA))
+            using (UnityWebRequest request = UnityWebRequest.Get(Constants.ENDPOINT_SCATTERPLOT_GET))
             {
                 yield return request.SendWebRequest();
                 if (request.isHttpError || request.isHttpError)

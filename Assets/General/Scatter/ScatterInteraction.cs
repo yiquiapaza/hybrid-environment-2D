@@ -28,7 +28,7 @@ namespace ScatterPlot
             WWWForm form = new WWWForm();
             form.AddField("id", gameObject.tag);
             form.AddField("state", 0);
-            using (UnityWebRequest request = UnityWebRequest.Post(Constants.ENDPOINT_COUNTRY, form))
+            using (UnityWebRequest request = UnityWebRequest.Post(Constants.ENDPOINT_SCATTERPLOT_GET, form))
             {
                 yield return request.SendWebRequest();
                 if (!request.isNetworkError || !request.isHttpError)
