@@ -8,8 +8,7 @@ namespace BarChart
 {
     public class BarChartClient : MonoBehaviour
     {
-        [SerializeField]
-        //private Material _changeMaterial;
+        [SerializeField] Material _changeMaterial;
         private JSONNode _dataRequest;
         private Material _tempMaterial;
         private string _nameObject = "bar";
@@ -41,11 +40,13 @@ namespace BarChart
                     _dataRequest = (JSONArray)JSON.Parse(request.downloadHandler.text);
                     if (!_dataRequest.IsNull)
                     {
-
-                        //_tempObject = GameObject.Find(_dataRequest["state"]);
-                        //_tempMaterial = _tempObject.GetComponent<MeshRenderer>().material;
-                        //_tempObject.GetComponent<MeshRenderer>().material = _changeMaterial;
-                        Debug.Log(_dataRequest);
+                        for (int i = 0; i < _dataRequest.Count; i++)
+                        {
+                            _tempObject = GameObject.Find(string.Concat(_nameObject, "-",   _dataRequest[i]["element"], _dataRequest[i]["element"]["value"]));
+                            _tempObject.GetComponent<MeshRenderer>().material = _changeMaterial;
+                            Debug.Log(_dataRequest);
+                        }
+                            
                     }
                     Debug.Log(_dataRequest);
                 }
