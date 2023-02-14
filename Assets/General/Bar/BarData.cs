@@ -42,7 +42,6 @@ namespace BarChart
             tempGameOject = message.transform.GetChild(1).gameObject;
             Debug.Log(tempGameOject.name);
             tempGameOject.GetComponent<TextMeshPro>().text = _tempData[Int16.Parse(data[1])]["parameter"] + "\n" + _tempData[Int16.Parse(data[1])]["parameter3"][Int16.Parse(data[2])];
-
         }
 
         private void OnMouseExit()
