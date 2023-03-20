@@ -36,7 +36,7 @@ namespace BarChart
             message.SetActive(true);
             message.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.2f, gameObject.transform.position.z - 0.5f);
             GameObject tempGameOject;
-            data = gameObject.name.Split('-');
+            data = gameObject.tag.Split('-');
             Debug.Log(gameObject.name);
             Debug.Log(gameObject.tag);
             tempGameOject = message.transform.GetChild(1).gameObject;

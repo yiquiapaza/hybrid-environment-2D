@@ -83,12 +83,11 @@ namespace BarChart
         {
             _relativePosition = gameObject.transform.localPosition;
             _relativeScale = gameObject.transform.localScale;
-            float length = 0;
             if (indexZ == 0 )
             {
                 _temp = 0;
                 _temp = _relativeScale.y;
-                length = _temp / 2;
+                float length = _temp / 2;
                 gameObject.transform.localPosition = new Vector3(indexX + 1f, length, 0);
             }
             else
