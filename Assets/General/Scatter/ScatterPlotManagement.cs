@@ -35,7 +35,9 @@ namespace ScatterPlot
         [SerializeField] Material _materialCategory8;
 
         [SerializeField] TextAsset _data;
-        [SerializeField] int _parameter;
+        [SerializeField] string _firstParameter;
+        [SerializeField] string _secondParameter;
+        [SerializeField] int _currentlyPosition;
         #endregion
 
         #region Features
@@ -52,10 +54,10 @@ namespace ScatterPlot
                 {
                     _tempObject = Instantiate(_scatterElement);
                     _tempObject.transform.parent = transform;
-                    AddName(_tempObject, _parameter, i);
+                    AddName(_tempObject, i, _currentlyPosition, _firstParameter, _secondParameter );
                     AddTagObject(_tempObject, i);
                     SetMaterial(_tempObject, _tempData[i]["parameter1"]);
-                    UpdatePosition(_tempObject, i,"parameter3", "parameter3", _parameter);
+                    UpdatePosition(_tempObject, i, _firstParameter, _secondParameter, _currentlyPosition);
                 }
             }
         }
@@ -70,17 +72,17 @@ namespace ScatterPlot
             tempObject.tag = string.Concat("scatter-", i);
         }
 
-        private void UpdatePosition(GameObject gameObject, int element, string x, string y, int value)
+        private void UpdatePosition(GameObject gameObject, int element, string x, string y, int currentlyPosition)
         {
             Debug.Log(_tempObject.transform.localScale.ToString());
             Debug.Log(_tempObject.transform.position.ToString());
-            Debug.Log(_tempData[value][x]);
-            gameObject.transform.localPosition = new Vector3(_tempData[element][x][value], _tempData[element][y][value], 0);   
+            Debug.Log(_tempData[element][x]);
+            gameObject.transform.localPosition = new Vector3(_tempData[element][x][currentlyPosition]*8.5f, _tempData[element][y][currentlyPosition]*8.5f, 0);   
         }
 
-        private void AddName(GameObject tempObject, int position, int value)
+        private void AddName(GameObject tempObject, int element, int currentlyPosition, string firstValue, string secondValue )
         {
-            tempObject.name = string.Concat("scatter", "-", position, "-", value);
+            tempObject.name = string.Concat("scatter", "-", element, "-", currentlyPosition, "-", firstValue, "-", secondValue);
         }
 
         #region Select Material

@@ -36,12 +36,12 @@ namespace BarChart
             message.SetActive(true);
             message.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.2f, gameObject.transform.position.z - 0.5f);
             GameObject tempGameOject;
-            data = gameObject.tag.Split('-');
+            data = gameObject.name.Split('-');
             Debug.Log(gameObject.name);
-            Debug.Log(gameObject.tag);
             tempGameOject = message.transform.GetChild(1).gameObject;
-            Debug.Log(tempGameOject.name);
-            tempGameOject.GetComponent<TextMeshPro>().text = _tempData[Int16.Parse(data[1])]["parameter"] + "\n" + _tempData[Int16.Parse(data[1])]["parameter3"][Int16.Parse(data[2])];
+            
+            tempGameOject.GetComponent<TextMeshPro>().text = _tempData[short.Parse(data[1])]["parameter"] + "\n" + _tempData[short.Parse(data[1])]["parameter3"][short.Parse(data[2])];
+            
         }
 
         private void OnMouseExit()
