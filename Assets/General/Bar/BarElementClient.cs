@@ -24,7 +24,7 @@ public class BarElementClient : MonoBehaviour
         elementInfo = new WWWForm();
         elementInfo.AddField("element", dataElment[1]);
         elementInfo.AddField("value", dataElment[2]);
-        using (UnityWebRequest client = UnityWebRequest.Post(Constants.ENDPOINT_BARCHART_DESKTOP_POST + "?task=2", elementInfo ))
+        using (UnityWebRequest client = UnityWebRequest.Post(Constants.ENDPOINT_BARCHART_DESKTOP_POST, elementInfo ))
         {
             yield return client.SendWebRequest();
             if (client.isHttpError)

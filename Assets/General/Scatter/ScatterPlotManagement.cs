@@ -54,7 +54,7 @@ namespace ScatterPlot
                 {
                     _tempObject = Instantiate(_scatterElement);
                     _tempObject.transform.parent = transform;
-                    AddName(_tempObject, i, _currentlyPosition, _firstParameter, _secondParameter );
+                    AddName(_tempObject, i, _currentlyPosition );
                     AddTagObject(_tempObject, i);
                     SetMaterial(_tempObject, _tempData[i]["parameter1"]);
                     UpdatePosition(_tempObject, i, _firstParameter, _secondParameter, _currentlyPosition);
@@ -80,9 +80,10 @@ namespace ScatterPlot
             gameObject.transform.localPosition = new Vector3(_tempData[element][x][currentlyPosition]*8.5f, _tempData[element][y][currentlyPosition]*8.5f, 0);   
         }
 
-        private void AddName(GameObject tempObject, int element, int currentlyPosition, string firstValue, string secondValue )
+        private void AddName(GameObject tempObject, int element, int currentlyPosition)
         {
-            tempObject.name = string.Concat("scatter", "-", element, "-", currentlyPosition, "-", firstValue, "-", secondValue);
+            //tempObject.name = string.Concat("scatter", "-", element, "-", currentlyPosition, "-", firstValue, "-", secondValue);
+            tempObject.name = string.Concat("scatter", "-", element, "-", currentlyPosition);
         }
 
         #region Select Material

@@ -68,7 +68,7 @@ namespace BarChart
                     UpdateBarSize(TempObj, _tempData[i]["parameter3"][j]);
                     UpdateBarPosition(TempObj, i, j);
                     SetMaterial(TempObj, _tempData[i]["parameter1"]);
-                    AddNameObject(TempObj, i+1, j);
+                    AddNameObject(TempObj, i, j);
                 }
             }
         }
