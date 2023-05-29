@@ -112,7 +112,7 @@ public class AplicationManagement : MonoBehaviour
                         if (_temObjBar != null)
                             SetMaterial(_temObjBar, _tempData[i]["parameter1"]);
                     }
-                }
+                } 
 
             }
         }
